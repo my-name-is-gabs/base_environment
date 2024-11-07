@@ -90,11 +90,29 @@ sudo systemctl enable docker
   sudo pip3 install docker-compose==1.29.2
   ```
 
+## Request Dependecy warning
+Upgrade or Downgrade requests, urllib3, and chardet: First, try to upgrade the requests package along with urllib3 and chardet to compatible versions by running:
 
+```bash
+pip install --upgrade requests urllib3 chardet
+```
+This should ensure that all dependencies are aligned with compatible versions.
 
+Install Specific Compatible Versions: If upgrading doesn’t work, try installing specific versions that are known to work together. For example, as of recent updates, the following versions are often compatible:
 
+```bash
+pip install requests==2.31.0 urllib3==1.26.16 chardet==3.0.4
+````
+Use requests with charset_normalizer Instead of chardet: Since requests has shifted to use charset_normalizer by default instead of chardet, you might avoid the issue by uninstalling chardet:
 
+```bash
+pip uninstall chardet
+```
+Verify the Installation: After making these changes, verify the installed versions to confirm compatibility:
 
+```bash
+pip show requests urllib3 chardet charset_normalizer
+```
 
 
 
