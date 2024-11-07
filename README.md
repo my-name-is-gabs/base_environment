@@ -1,9 +1,7 @@
 # base_environment
 troubleshooting my base_env
 
-## Installation
-
-Installing docker engine 27.1.2
+## Installing docker engine 27.1.2
 
 1. Uninstall any older Docker versions (if installed):
 ```bash
@@ -55,6 +53,59 @@ docker --version
 ```bash
 sudo systemctl enable docker
 ```
+
+## Solving issues in installing docker-compose version 1.29.2
+
+1. Check for Download and Permissions Errors:
+   - Make sure the download command was successful. Run:
+    ```bash
+    ls -l /usr/local/bin/docker-compose
+    ```
+   - You should see the file docker-compose in /usr/local/bin with executable permissions (-rwxr-xr-x). If it’s not there, the download might have failed or permissions weren’t set correctly.
+
+2. Re-run the Download and Permission Commands:
+  - Retry downloading the binary and setting permissions in case there was a network issue or a typo:
+    ```bash
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    ```
+
+3. Check the PATH:
+  - If docker-compose is not found after installation, the path might not include /usr/local/bin. Add it to your PATH:
+    ```bash
+    echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+4. Verify with Correct Command:
+ - Double-check with this command to confirm installation:
+   ```bash
+   docker-compose --version
+   ```
+
+5. Alternative Installation Using Python (if needed):
+ - If direct download still doesn’t work, you can install Docker Compose via pip (Python’s package manager):
+  ```bash
+  sudo apt-get install -y python3-pip
+  sudo pip3 install docker-compose==1.29.2
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    
 
