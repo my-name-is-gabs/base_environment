@@ -118,13 +118,42 @@ pip show requests urllib3 chardet charset_normalizer
 ## From stackOverflow
 [solution](https://stackoverflow.com/questions/39684974/docker-for-windows-error-hardware-assisted-virtualization-and-data-execution-p#39989990)
 
+<br>
+<hr>
+<br>
 
+## New steps in installing docker 27.1.2
+### Step 1: Download Docker Engine Version 27.1.2 Packages
+1. Create a directory to store the .deb files:
+```bash
+mkdir -p ~/docker-install && cd ~/docker-install
+```
 
+2. Download the specific .deb files:
+```bash
+curl -O https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce_5%3A27.1.2~3-0~ubuntu-focal_amd64.deb
+curl -O https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-cli_5%3A27.1.2~3-0~ubuntu-focal_amd64.deb
+curl -O https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.6.21-1_amd64.deb
+```
 
+### Step 2: Install Docker Packages
+Once the .deb files are downloaded, you can install them in the following order:
+```bash
+sudo apt-get install ./containerd.io_1.6.21-1_amd64.deb
+sudo apt-get install ./docker-ce-cli_5:27.1.2~3-0~ubuntu-focal_amd64.deb
+sudo apt-get install ./docker-ce_5:27.1.2~3-0~ubuntu-focal_amd64.deb
+```
 
+### Step 3: Verify the Installation
+To confirm Docker Engine 27.1.2 is installed, check the Docker version:
+```bash
+docker --version
+```
 
-
-
+### Step 4: Clean Up
+```bash
+rm -rf ~/docker-install
+```
 
 
    
