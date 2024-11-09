@@ -115,6 +115,8 @@ pip show requests urllib3 chardet charset_normalizer
 ```
 
 
+## From stackOverflow
+[solution](https://stackoverflow.com/questions/39684974/docker-for-windows-error-hardware-assisted-virtualization-and-data-execution-p#39989990)
 
 
 
